@@ -16,14 +16,20 @@ export const deletePatient = async (id: string) => {
     return await Patient.findByIdAndDelete(id);
 }
 
-export const getPatients = async (page = 1, limit = 50) => {
+export const getPatients = async (type="full", page = 1, limit = 50) => {
+    let contents;
+    
     page = Math.max(1, page);
     limit = Math.max(1, limit);
 
     // Calculate the number of items to skip
     const skip = (page - 1) * limit;
 
-    const contents = await Patient.find().skip(skip).limit(limit).sort({ created_at: 1 });
+    if(type == "short") 
+        contents = await Patient.find().skip(skip).limit(limit).sort({ created_at: 1 }).select('name medical_id phone hospital_name');
+    else
+        contents = await Patient.find().skip(skip).limit(limit).sort({ created_at: 1 });
+    
     const totalItems = await Patient.countDocuments();
     return {
         contents,

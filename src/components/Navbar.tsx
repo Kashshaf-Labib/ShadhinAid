@@ -21,10 +21,8 @@ const Navbar = () => {
   const handleScroll = () => {
     if (typeof window !== "undefined") {
       if (window.scrollY > lastScrollY) {
-        
         setIsVisible(false);
       } else {
-        
         setIsVisible(true);
       }
       lastScrollY = window.scrollY;
@@ -48,15 +46,17 @@ const Navbar = () => {
     >
       <div className="max-w-7xl w-full mx-auto flex justify-between items-center">
         <Link href="/" className="text-3xl font-bold flex items-center gap-2">
-          <Image src={"/logo.png"} alt="Shadhin Aid Nav brand" height={40} width={40} />
+          <Image
+            src={"/logo.png"}
+            alt="Shadhin Aid Nav brand"
+            height={40}
+            width={40}
+          />
           <span className="text-2xl font-extrabold">Shadhin Aid</span>
         </Link>
 
         <div className="hidden md:flex items-center">
-          <Link
-            href="/"
-            className="mx-4  text-zinc-100 hover:text-gray-300"
-          >
+          <Link href="/" className="mx-4  text-zinc-100 hover:text-gray-300">
             Home
           </Link>
           <Link
@@ -78,7 +78,8 @@ const Navbar = () => {
               onClick={toggleDropdown}
               className=" text-zinc-100 hover:text-gray-300 focus:outline-none"
             >
-              Patient Section
+              {" "}
+              Patient Section{" "}
             </button>
 
             {isDropdownOpen ? (
@@ -105,7 +106,9 @@ const Navbar = () => {
                   </Link>
                 </div>
               </div>
-            ) : ""}
+            ) : (
+              ""
+            )}
           </div>
 
           <Link
@@ -162,31 +165,18 @@ const Navbar = () => {
             >
               Contact
             </Link>
-            {/* Patient Section Dropdown */}
-            <div className="relative">
-              <button
-                onClick={toggleDropdown}
-                className="block w-full text-left px-3 py-2  text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300 focus:outline-none"
-              >
-                Patient Section
-              </button>
-              {isDropdownOpen && (
-                <div className="flex flex-col space-y-2 mt-2">
-                  <Link
-                    href="/patientform"
-                    className="block px-3 py-2  text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300"
-                  >
-                    Submit Patient Details
-                  </Link>
-                  <Link
-                    href="/patientdetails"
-                    className="block px-3 py-2  text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300"
-                  >
-                    View Patients
-                  </Link>
-                </div>
-              )}
-            </div>
+            <Link
+              href="/patientform"
+              className="block px-3 py-2  text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300"
+            >
+              Submit Patient Details
+            </Link>
+            <Link
+              href="/patientdetails"
+              className="block px-3 py-2  text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300"
+            >
+              View Patients
+            </Link>
             <Link
               href="/fundraiser"
               className="block px-3 py-2  text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300"
