@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { dbConnect } from "@/utils/mongodb";
-import { getPatients, searchPatientsByHospital } from "@/utils/queries/patient";
+import { createPatient, getPatients, searchPatientsByHospital } from "@/utils/queries/patient";
 
 
 const GET = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -21,9 +21,32 @@ const GET = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 const POST = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name, medical_id, profession, phone, description, guardian_name, guardian_profession, guardian_phone, hospital_name } = req.body;
-
-  await dbConnect();
+  try {
+    
+    const { name, medical_id, profession, phone, description, guardian_name, guardian_profession, guardian_phone, hospital_name, lat, lng } = req.body;
+  
+    await dbConnect();
+    const data = await createPatient({
+      name,
+      medical_id,
+      profession,
+      phone,
+      description,
+      guardian_name,
+      guardian_profession,
+      guardian_phone,
+      hospital_name,
+      is_approved: false,
+      location: {
+        type: 'Point',
+        coordinates: [lng, lat]
+      }
+    });
+    res.status(201).json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to create patient" });
+  }
 }
 
 export default function handler(
@@ -31,5 +54,6 @@ export default function handler(
   res: NextApiResponse,
 ) {
   if (req.method === 'GET') return GET(req, res);
+  if (req.method === 'POST') return POST(req, res);
   res.status(404).json({error: 'Invalid Method'}); 
 }

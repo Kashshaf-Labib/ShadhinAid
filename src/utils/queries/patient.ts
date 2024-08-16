@@ -4,8 +4,7 @@ export const findPatient = async (id: string) => {
     return await Patient.findById(id);
 }
 
-export const createPatient = async (data: IPatient) => {
-    data.is_approved = false;
+export const createPatient = async (data: Omit<IPatient, 'created_at'>) => {
     return await Patient.create(data);
 }
 
