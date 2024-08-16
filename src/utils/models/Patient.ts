@@ -11,6 +11,10 @@ export interface IPatient {
     guardian_phone: string,
     hospital_name: string,
     is_approved: boolean,
+    location: {
+        type: string,
+        coordinates: number[],
+    },
     created_at: Date
 }
 
@@ -25,8 +29,13 @@ const PatientSchema = new Schema<IPatient>({
     guardian_phone: { type: String, required: true },
     hospital_name: { type: String },
     is_approved: { type: Boolean, default: false },
+    location: {
+        type: { type: String, enum: ['Point'], required: true, default: 'Point' }, // 'location.type' must be 'Point'
+        coordinates: { type: [Number], required: true, },
+      },
     created_at: { type: Date, default: Date.now },
 });
+PatientSchema.index({ location: '2dsphere' });
 
 const Patient = models?.patient || model('patient', PatientSchema);
 
