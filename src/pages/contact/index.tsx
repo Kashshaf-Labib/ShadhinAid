@@ -5,13 +5,13 @@ const ContactPage = () => {
         <div className='mb-8'>
           <div className='mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12'>
             <p className='text-base font-semibold uppercase tracking-wide text-blue-600'>
-              Contact Us
+              যোগাযোগ করুন
             </p>
             <h2 className='font-heading mb-4 font-bold tracking-tight text-gray-900 text-4xl sm:text-5xl'>
-              Get in Touch
+              আমাদের সাথে যোগাযোগ করুন
             </h2>
             <p className='mx-auto mt-4 max-w-3xl text-xl text-gray-600'>
-              We&apos;re here to help and answer any question you might have
+              আমরা আপনার যেকোনো প্রশ্নের উত্তর দিতে এখানে আছি
             </p>
           </div>
         </div>
@@ -19,8 +19,9 @@ const ContactPage = () => {
           <div className='grid md:grid-cols-2 gap-8'>
             <div className='h-full pr-6'>
               <p className='mt-3 mb-12 text-lg text-gray-600'>
-                Feel free to reach out to us using the contact information below
-                or by filling out the form. We look forward to hearing from you!
+                নিচের যোগাযোগের তথ্য ব্যবহার করে বা ফর্মটি পূরণ করে আমাদের সাথে
+                যোগাযোগ করতে দ্বিধা করবেন না। আপনার থেকে শোনার জন্য আমরা অপেক্ষা
+                করছি!
               </p>
               <ul className='space-y-8'>
                 <li className='flex items-start'>
@@ -43,12 +44,12 @@ const ContactPage = () => {
                   </div>
                   <div className='ml-4'>
                     <h3 className='mb-2 text-lg font-medium leading-6 text-gray-900'>
-                      Our Address
+                      আমাদের ঠিকানা
                     </h3>
                     <p className='text-gray-600'>
-                      1230 Maecenas Street Donec Road
+                      ১২৩০ ম্যাসেনাস স্ট্রিট ডোনেক রোড
                     </p>
-                    <p className='text-gray-600'>New York, NY 10001</p>
+                    <p className='text-gray-600'>নিউ ইয়র্ক, এনওয়াই ১০০০১</p>
                   </div>
                 </li>
                 <li className='flex items-start'>
@@ -72,10 +73,10 @@ const ContactPage = () => {
                   </div>
                   <div className='ml-4'>
                     <h3 className='mb-2 text-lg font-medium leading-6 text-gray-900'>
-                      Contact
+                      যোগাযোগ
                     </h3>
-                    <p className='text-gray-600'>Mobile: +1 (123) 456-7890</p>
-                    <p className='text-gray-600'>Mail: contact@example.com</p>
+                    <p className='text-gray-600'>মোবাইল: +১ (১২৩) ৪৫৬-৭৮৯০</p>
+                    <p className='text-gray-600'>মেইল: contact@example.com</p>
                   </div>
                 </li>
                 <li className='flex items-start'>
@@ -98,13 +99,13 @@ const ContactPage = () => {
                   </div>
                   <div className='ml-4'>
                     <h3 className='mb-2 text-lg font-medium leading-6 text-gray-900'>
-                      Working hours
+                      কাজের সময়
                     </h3>
                     <p className='text-gray-600'>
-                      Monday - Friday: 08:00 - 17:00
+                      সোমবার - শুক্রবার: ০৮:০০ - ১৭:০০
                     </p>
                     <p className='text-gray-600'>
-                      Saturday & Sunday: 08:00 - 12:00
+                      শনিবার ও রবিবার: ০৮:০০ - ১২:০০
                     </p>
                   </div>
                 </li>
@@ -115,7 +116,7 @@ const ContactPage = () => {
               id='form'
             >
               <h2 className='mb-6 text-3xl font-bold text-gray-900'>
-                Ready to Get Started?
+                শুরু করতে প্রস্তুত?
               </h2>
               <form id='contactForm'>
                 <div className='space-y-6'>
@@ -124,13 +125,13 @@ const ContactPage = () => {
                       htmlFor='name'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      Your Name
+                      আপনার নাম
                     </label>
                     <input
                       type='text'
                       id='name'
                       autoComplete='given-name'
-                      placeholder='John Doe'
+                      placeholder='জন ডো'
                       className='p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
                       name='name'
                     />
@@ -140,13 +141,13 @@ const ContactPage = () => {
                       htmlFor='email'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      Email Address
+                      ইমেইল ঠিকানা
                     </label>
                     <input
                       type='email'
                       id='email'
                       autoComplete='email'
-                      placeholder='you@example.com'
+                      placeholder='আপনি@উদাহরণ.কম'
                       className='p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
                       name='email'
                     />
@@ -156,13 +157,13 @@ const ContactPage = () => {
                       htmlFor='message'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      Your Message
+                      আপনার বার্তা
                     </label>
                     <textarea
                       id='message'
                       name='message'
                       rows={4}
-                      placeholder='How can we help you?'
+                      placeholder='আমরা কীভাবে আপনাকে সাহায্য করতে পারি?'
                       className='p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
                     ></textarea>
                   </div>
@@ -172,7 +173,7 @@ const ContactPage = () => {
                     type='submit'
                     className='w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1'
                   >
-                    Send Message
+                    বার্তা পাঠান
                   </button>
                 </div>
               </form>
