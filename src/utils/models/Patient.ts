@@ -40,3 +40,5 @@ PatientSchema.index({ location: '2dsphere' });
 const Patient = models?.patient || model('patient', PatientSchema);
 
 export default Patient;
+
+
