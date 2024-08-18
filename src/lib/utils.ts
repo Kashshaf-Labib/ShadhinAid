@@ -1,10 +1,3 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
 export const getLoggedInUser = async () => {
   const token = localStorage.getItem("token");
   const res = await (await fetch("/api/user/profile", {
@@ -46,3 +39,8 @@ export const navMenus = [
     href: "/fund-raising",
   },
 ]
+
+export type Address = {
+  location: {lat: number, lng: number};
+  name?: string;
+}

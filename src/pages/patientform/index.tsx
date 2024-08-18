@@ -2,9 +2,20 @@ import { FormEvent, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import toast from "react-hot-toast";
+import { MapProvider } from "@/components/MapProvider";
+import AutoCompleteInput from "@/components/AutoCompleteInput";
+import { Address } from "@/lib/utils";
 
 export default function PatientForm() {
   const [loading, setLoading] = useState(false);
+  const [address, setAddress] = useState({} as Address);
+
+  const onAddressChange = (address: Address) => {
+    setAddress(address);
+  }
+
+  console.log(address);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -42,11 +53,11 @@ export default function PatientForm() {
       <Head>
         <title>Submit Patient Details - Shadhin Aid</title>
       </Head>
-      <Navbar />
+      <MapProvider>
       <div className="min-h-screen pt-24 en bg-gradient-to-r from-blue-100 to-indigo-100 p-8 flex items-center justify-center">
         <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-7xl">
           <h1 className="text-3xl font-bold mb-8 text-center text-blue-900">
-            Submit Patient Details
+          রোগীর বিবরণ জমা দিন
           </h1>
           <form onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-8">
@@ -57,7 +68,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="name"
                     placeholder="নাম লিখুন"
                     required
@@ -69,7 +80,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="medical_id"
                     placeholder="মেডিকেল আইডি লিখুন"
                     required
@@ -81,7 +92,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="profession"
                     placeholder="পেশা লিখুন"
                     required
@@ -93,7 +104,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="phone"
                     placeholder="নাম্বার লিখুন"
                     required
@@ -108,7 +119,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="hospital_name"
                     placeholder="হাসপাতালের নাম লিখুন"
                   />
@@ -119,7 +130,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="guardian_name"
                     placeholder="নাম লিখুন"
                     required
@@ -131,7 +142,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="guardian_profession"
                     placeholder="পেশা লিখুন"
                     required
@@ -143,7 +154,7 @@ export default function PatientForm() {
                   </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="bg-slate-100 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     name="guardian_phone"
                     placeholder="নাম্বার লিখুন"
                     required
@@ -152,12 +163,13 @@ export default function PatientForm() {
               </div>
             </div>
 
+            <AutoCompleteInput setAddress={onAddressChange} address={address} />
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700">
                 ঘটনার বিবরণী
               </label>
               <textarea
-                className="min-h-36 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="bg-slate-100 min-h-36 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 name="description"
                 placeholder="বিস্তারিত লিখুন"
                 required
@@ -166,13 +178,14 @@ export default function PatientForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-lg"
+              className="w-full py-3 bg-primary text-white rounded-lg hover:brightness-200 font-semibold text-lg"
             >
               {loading ? "Please wait" : "Submit"}
             </button>
           </form>
         </div>
       </div>
-    </>
+      </MapProvider>
+      </>
   );
 }
