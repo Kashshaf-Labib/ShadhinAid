@@ -14,39 +14,41 @@ export default function PatientForm() {
     setAddress(address);
   }
 
-  console.log(address);
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
+    e.preventDefault()
+    const formData = new FormData(e.target as HTMLFormElement)
+    const data = Object.fromEntries(formData.entries())
     console.log(data);
+    if(!address.location.lat || !address.location.lng) {
+      return toast.error("Please select an address");
+    }
     setLoading(true);
     // Handle API request here
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...data, lat: 23.8103, lng: 90.4125 }), // Apatoto random value
-    };
+      body: JSON.stringify({ ...data, location_name: address.name, lat: address.location.lat, lng: address.location.lng }), // Apatoto random value
+    }
 
     fetch("/api/patients", options)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        console.log(response)
         if (response.error) {
-          setLoading(false);
-          return toast.error("Failed to upload patient details");
+          setLoading(false)
+          return toast.error("Failed to upload patient details")
         }
-        toast.success("Patient details submitted successfully");
-        (e.target as HTMLFormElement).reset();
-        setLoading(false);
+        toast.success("Patient details submitted successfully")
+        ;(e.target as HTMLFormElement).reset()
+        setLoading(false)
       })
       .catch((err) => {
-        console.error(err);
-        setLoading(false);
-        toast.error("Failed to upload patient details");
-      });
-  };
+        console.error(err)
+        setLoading(false)
+        toast.error("Failed to upload patient details")
+      })
+  }
 
   return (
     <>
@@ -60,10 +62,10 @@ export default function PatientForm() {
           রোগীর বিবরণ জমা দিন
           </h1>
           <form onSubmit={handleSubmit}>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className='grid md:grid-cols-2 gap-8'>
               <div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     নাম
                   </label>
                   <input
@@ -74,8 +76,8 @@ export default function PatientForm() {
                     required
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     মেডিকেল আইডি
                   </label>
                   <input
@@ -86,8 +88,8 @@ export default function PatientForm() {
                     required
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     রোগীর পেশা
                   </label>
                   <input
@@ -98,8 +100,8 @@ export default function PatientForm() {
                     required
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     রোগীর নাম্বার
                   </label>
                   <input
@@ -113,8 +115,8 @@ export default function PatientForm() {
               </div>
 
               <div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     হাসপাতালের নাম (যদি রোগী এখনও ভর্তি থাকে)
                   </label>
                   <input
@@ -124,8 +126,8 @@ export default function PatientForm() {
                     placeholder="হাসপাতালের নাম লিখুন"
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     অভিভাবকের নাম
                   </label>
                   <input
@@ -136,8 +138,8 @@ export default function PatientForm() {
                     required
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     অভিভাবকের পেশা
                   </label>
                   <input
@@ -148,8 +150,8 @@ export default function PatientForm() {
                     required
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className='mb-6'>
+                  <label className='block text-sm font-medium text-gray-700'>
                     অভিভাবকের নাম্বার
                   </label>
                   <input
@@ -176,7 +178,7 @@ export default function PatientForm() {
               ></textarea>
             </div>
             <button
-              type="submit"
+              type='submit'
               disabled={loading}
               className="w-full py-3 bg-primary text-white rounded-lg hover:brightness-200 font-semibold text-lg"
             >
