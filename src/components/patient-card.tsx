@@ -22,7 +22,7 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
         <p className='text-gray-600'>রোগ: {patient.condition}</p>
         <p className='text-gray-600'>শেষ পরীক্ষা: {patient.lastCheckup}</p>
         <div className='mt-4'>
-          <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full text-sm transition duration-300 ease-in-out transform hover:-translate-y-1'>
+          <button className='bg-primary hover:brightness-200 text-white font-bold py-2 px-4 rounded-full text-sm transition duration-300 ease-in-out transform hover:-translate-y-1'>
             বিস্তারিত দেখুন
           </button>
         </div>

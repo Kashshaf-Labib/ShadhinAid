@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       age: 45,
       condition: "উচ্চ রক্তচাপ",
       lastCheckup: "১০/০৮/২০২৪",
-      imageUrl: "https://placehold.co/400",
+      imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&tc=black&bg=#cecece",
     },
     {
       id: 2,
@@ -20,12 +20,12 @@ const Home: NextPage = () => {
       age: 32,
       condition: "ডায়াবেটিস",
       lastCheckup: "১৫/০৮/২০২৪",
-      imageUrl: "https://placehold.co/400",
+      imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&tc=black&bg=#cecece",
     },
   ]
 
   return (
-    <div className='bg-[#87CEEB]'>
+    <div className='bg-[#89eb87]'>
       {/* Hero Section */}
       <section className='mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-24'>
         <div className='flex flex-col md:flex-row items-center justify-between'>
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
             <input
               type='text'
               placeholder='রোগী খুঁজুন...'
-              className='p-2 w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+              className='p-2 w-full rounded-md border border-gray-300 shadow-sm focus:border-primary focus:ring-primary'
             />
           </div>
         </div>

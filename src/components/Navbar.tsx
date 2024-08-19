@@ -62,12 +62,11 @@ const Navbar: React.FC = () => {
       <div className='max-w-7xl w-full mx-auto flex justify-between items-center'>
         <Link href='/' className='text-3xl font-bold flex items-center gap-2'>
           <Image
-            src='/logo.png'
+            src='/shadhin.png'
             alt='Shadhin Aid Nav brand'
-            height={40}
-            width={40}
+            height={300}
+            width={150}
           />
-          <span className='text-2xl font-extrabold'>Shadhin Aid</span>
         </Link>
 
         <div className='hidden md:flex items-center'>
