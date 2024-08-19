@@ -34,7 +34,7 @@ const GET = async (req: NextApiRequest, res: NextApiResponse) => {
 const POST = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
 
-    const { name, medical_id, profession, phone, description, guardian_name, guardian_profession, guardian_phone, hospital_name, location_name, lat, lng } = req.body;
+    const { name, medical_id, profession, phone, description, guardian_name, guardian_profession, guardian_phone, imageUrl, hospital_name, location_name, total_fund_needed, lat, lng } = req.body;
 
     await dbConnect();
     const data = await createPatient({
@@ -47,6 +47,8 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
       guardian_profession,
       guardian_phone,
       hospital_name,
+      imageUrl,
+      total_fund_needed,
       approval: 'pending',
       location: {
         type: 'Point',

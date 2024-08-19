@@ -55,3 +55,7 @@ export function formatDateToDDMMYYYYHHMM(_date: Date): string {
 
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
+
+export function generate_uuid() {
+  return Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+}

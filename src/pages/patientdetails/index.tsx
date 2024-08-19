@@ -136,27 +136,15 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { IPatient } from "@/utils/models/Patient";
+import Link from "next/link";
 
-interface IPatient {
+interface Patient extends IPatient {
   _id: string;
-  name: string;
-  profession: string;
-  description: string;
-  phone: string;
-  guardian_name: string;
-  guardian_profession: string;
-  guardian_phone: string;
-  hospital_name: string;
-  is_approved: boolean;
-  location: {
-    type: string;
-    coordinates: number[];
-  };
-  created_at: string;
 }
 
 export default function PatientDetails() {
-  const [patients, setPatients] = useState<IPatient[]>([]);
+  const [patients, setPatients] = useState<Patient[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -172,17 +160,12 @@ export default function PatientDetails() {
     fetchPatients();
   }, []);
 
-  const handleCardClick = (patientId: string) => {
-    router.push(`/patients/${patientId}`);
-  };
-
   return (
     <>
       <Head>
         <title>Patient Details - Shadhin Aid</title>
       </Head>
       <div className="min-h-screen bg-gradient-to-r from-blue-100 to-indigo-100">
-        <Navbar />
         <div className="container mx-auto p-4 pt-20">
           <h1
             className="text-4xl font-bold mb-8"
@@ -194,8 +177,7 @@ export default function PatientDetails() {
             {patients.map((patient) => (
               <div
                 key={patient._id}
-                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-2xl transition-shadow"
-                onClick={() => handleCardClick(patient._id)}
+                className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-shadow"
               >
                 <h2
                   className="text-xl font-bold mb-2"
@@ -206,11 +188,11 @@ export default function PatientDetails() {
                 <p className="text-gray-600">
                   রোগীর পেশা: {patient.profession}
                 </p>
-                <p className="text-gray-600">প্রয়োজনীয় ফান্ড: 0৳</p>
-                <p className="text-gray-600">সংগ্রহিত ফান্ড: 0৳</p>
-                <button className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">
+                <p className="text-gray-600">প্রয়োজনীয় ফান্ড: {patient.total_fund_needed}৳</p>
+                <p className="text-gray-600">সংগ্রহিত ফান্ড: {patient.total_fund_collected}৳</p>
+                <Link href={`/patients/${patient._id}`} className="w-fit block mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-green-700">
                   Donate Now
-                </button>
+                </Link>
               </div>
             ))}
           </div>

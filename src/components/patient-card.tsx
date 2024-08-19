@@ -1,8 +1,7 @@
-import { Patient } from "@/types/types"
 import Image from "next/image"
 
 interface PatientCardProps {
-  patient: Patient
+  patient: any
 }
 
 const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {

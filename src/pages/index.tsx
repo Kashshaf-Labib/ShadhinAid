@@ -1,13 +1,13 @@
 import type { NextPage } from "next"
-import { Patient } from "@/types/types"
+import { Patient } from "@/types/index"
 import PatientCard from "@/components/patient-card"
 import Image from "next/image"
 import Link from "next/link"
 
 const Home: NextPage = () => {
-  const patients: Patient[] = [
+  const patients: any[] = [
     {
-      id: 1,
+      _id: '1',
       name: "জন ডো",
       age: 45,
       condition: "উচ্চ রক্তচাপ",
@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&tc=black&bg=#cecece",
     },
     {
-      id: 2,
+      _id: '2',
       name: "জেন স্মিথ",
       age: 32,
       condition: "ডায়াবেটিস",
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   ]
 
   return (
-    <div className='bg-[#89eb87]'>
+    <div className='bg-[#c5ffc4]'>
       {/* Hero Section */}
       <section className='mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-24'>
         <div className='flex flex-col md:flex-row items-center justify-between'>
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
         {/* Patient Card Grid */}
         <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {patients.map((patient) => (
-            <PatientCard key={patient.id} patient={patient} />
+            <PatientCard key={patient._id} patient={patient} />
           ))}
         </div>
       </section>
