@@ -4,11 +4,12 @@ import { useEffect, useRef } from "react";
 interface AutoCompleteInputProps {
   address: Address;
   setAddress: (address: Address) => void;
+  as?: string;
+  value?: string;
 }
 
 export default function AutoCompleteInput({
-  address,
-  setAddress,
+  address, setAddress, as, value
 }: AutoCompleteInputProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -41,6 +42,16 @@ export default function AutoCompleteInput({
         google.maps.event.clearListeners(autocomplete, 'place_changed');
         }
   }, []);
+  if(as)
+    return (
+      <input
+      ref={inputRef}
+      type="text"
+      className="outline-none border-none block"
+      defaultValue={value}
+      required
+    />
+  )
 
   return (
     <div className="mb-6">

@@ -40,7 +40,7 @@ export async function login(email: string, password: string) {
     const token = jwt.sign(userInfo, process.env.JWT_SECRET_KEY as string, {
       expiresIn: LOGIN_DURATION,
     });
-    return { token, userInfo };
+    return { token, user:userInfo };
   } else throw Error("Invalid email or password.");
 }
 

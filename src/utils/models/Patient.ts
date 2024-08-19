@@ -10,7 +10,9 @@ export interface IPatient {
     guardian_profession: string,
     guardian_phone: string,
     hospital_name: string,
-    is_approved: boolean,
+    approval: string,
+    total_fund_needed?: number,
+    total_fund_collected?: number,
     location_name: string,
     location: {
         type: string,
@@ -29,7 +31,9 @@ const PatientSchema = new Schema<IPatient>({
     guardian_profession: { type: String, required: true },
     guardian_phone: { type: String, required: true },
     hospital_name: { type: String },
-    is_approved: { type: Boolean, default: false },
+    approval: { type: String, default: 'pending' },
+    total_fund_needed: { type: Number, default: 0 },
+    total_fund_collected: { type: Number, default: 0 },
     location_name: { type: String, required: true },
     location: {
         type: { type: String, enum: ['Point'], required: true, default: 'Point' }, // 'location.type' must be 'Point'

@@ -11,6 +11,7 @@ export default function RootLayout({
   return (
     <>
       <Head>
+        <title> Shadhin Aid </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

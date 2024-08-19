@@ -4,9 +4,7 @@ import {
   createPatient,
   getPatients,
   searchPatientsByHospital,
-  updatePatient,
 } from "@/utils/queries/patient";
-import { checkAdmin } from "@/utils/middlewares/admin";
 
 const GET = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -49,7 +47,7 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
       guardian_profession,
       guardian_phone,
       hospital_name,
-      is_approved: false,
+      approval: 'pending',
       location: {
         type: 'Point',
         coordinates: [lng, lat]

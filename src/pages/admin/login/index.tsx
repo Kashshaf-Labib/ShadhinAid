@@ -1,20 +1,39 @@
-"use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/hooks/user";
 
 const AdminLogin = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [user, setUser] = useUser();
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     const form = e.target as HTMLFormElement;
     const data = Object.fromEntries((new FormData(form)).entries());
-
+    console.log(data);
+    try {
+      const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      };
+      
+      const res = await (await fetch('/api/user/login', options)).json();
+      if(res.error) throw new Error(res.error);
+      localStorage.setItem('token', res.data?.token);
+      setUser(res.data?.user);
+      router.push('/admin');
+    } catch (error) {
+      console.log(error);
+      setError("Error occured: " + (error as Error).message);
+      
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

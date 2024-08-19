@@ -4,7 +4,7 @@ const ContactPage = () => {
       <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24'>
         <div className='mb-8'>
           <div className='mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12'>
-            <p className='text-base font-semibold uppercase tracking-wide text-blue-600'>
+            <p className='text-base font-semibold uppercase tracking-wide text-primary'>
               যোগাযোগ করুন
             </p>
             <h2 className='font-heading mb-4 font-bold tracking-tight text-gray-900 text-4xl sm:text-5xl'>
@@ -25,7 +25,7 @@ const ContactPage = () => {
               </p>
               <ul className='space-y-8'>
                 <li className='flex items-start'>
-                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white'>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='24'
@@ -53,7 +53,7 @@ const ContactPage = () => {
                   </div>
                 </li>
                 <li className='flex items-start'>
-                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white'>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='24'
@@ -80,7 +80,7 @@ const ContactPage = () => {
                   </div>
                 </li>
                 <li className='flex items-start'>
-                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white'>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='24'
@@ -171,7 +171,7 @@ const ContactPage = () => {
                 <div className='mt-8'>
                   <button
                     type='submit'
-                    className='w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1'
+                    className='w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1'
                   >
                     বার্তা পাঠান
                   </button>

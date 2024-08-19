@@ -6,10 +6,10 @@ import { Toaster } from "react-hot-toast";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-    <RootLayout>
-      <Component {...pageProps} />
-      <Toaster />
-    </RootLayout>
+      <RootLayout>
+        <Component {...pageProps} />
+        <Toaster />
+      </RootLayout>
     </>
   );
 }

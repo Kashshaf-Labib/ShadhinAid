@@ -56,34 +56,34 @@ export default function PatientDetailPage() {
                   {patient.name}
                 </h1>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">রোগীর পেশা:</span>{" "}
+                  <span className="font-semibold">রোগীর পেশা:</span>
                   {patient.profession}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">বিবরণ:</span>{" "}
+                  <span className="font-semibold">বিবরণ:</span>
                   {patient.description}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
                   <span className="font-semibold">ফোন:</span> {patient.phone}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">অভিভাবকের নাম:</span>{" "}
+                  <span className="font-semibold">অভিভাবকের নাম:</span>
                   {patient.guardian_name}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">অভিভাবকের পেশা:</span>{" "}
+                  <span className="font-semibold">অভিভাবকের পেশা:</span>
                   {patient.guardian_profession}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">অভিভাবকের নাম্বার:</span>{" "}
+                  <span className="font-semibold">অভিভাবকের নাম্বার:</span>
                   {patient.guardian_phone}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">হাসপাতালের নাম:</span>{" "}
+                  <span className="font-semibold">হাসপাতালের নাম:</span>
                   {patient.hospital_name}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
-                  <span className="font-semibold">ঠিকানা:</span>{" "}
+                  <span className="font-semibold">ঠিকানা:</span>
                   {patient.location_name}
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
