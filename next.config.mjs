@@ -9,14 +9,16 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "via.assets.so"
+        hostname: "via.assets.so",
       },
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com"
-      }
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
