@@ -5,7 +5,7 @@ export const findPatient = async (id: string) => {
 };
 
 export const createPatient = async (data: Omit<IPatient, 'created_at'>) => {
-    return await Patient.create(data);
+  return await Patient.create(data);
 }
 
 
@@ -31,7 +31,7 @@ export const getPatients = async (type = "full", page = 1, limit = 50) => {
       .skip(skip)
       .limit(limit)
       .sort({ created_at: 1 })
-      .select("name medical_id phone hospital_name");
+      .select("name medical_id phone hospital_name imageUrl");
   else
     contents = await Patient.find()
       .skip(skip)
@@ -71,3 +71,22 @@ export const searchPatientsByHospital = async (
     currentPage: page,
   };
 };
+
+export const findPatientsNearby = async (lat: number, lng: number, radius = 2000, page = 1, limit = 50) => {
+  const query = {
+    location: {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: [lng, lat],
+        },
+        $maxDistance: radius,
+      },
+    },
+  };
+
+  return await Patient.find(query)
+    .skip((page - 1) * limit)
+    .limit(limit)
+    .sort({ location: 1 });
+}

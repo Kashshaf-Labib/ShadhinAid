@@ -26,7 +26,7 @@ export const bkash_headers = async () => {
     return {
         "Content-Type": "application/json",
         Accept: "application/json",
-        authorization: await getBkashIdToken(),
-        'x-app-key': process.env.bkash_api_key,
+        authorization: "Bearer " + await getBkashIdToken(),
+        'X-APP-Key': process.env.bkash_api_key,
     }
 }
