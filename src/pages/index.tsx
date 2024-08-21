@@ -4,6 +4,14 @@ import { IPatient } from "@/utils/models/Patient";
 import PatientCard from "@/components/patient-card";
 import Image from "next/image";
 import Link from "next/link";
+import { MapProvider } from "@/components/MapProvider";
+import AutoCompleteInput from "@/components/AutoCompleteInput";
+import { Address } from "@/lib/utils";
+import { BiSearch } from "react-icons/bi";
+import ReactPaginate from "react-paginate";
+import Spinner from "@/components/Spinner";
+import toast from "react-hot-toast";
+import LocationSearch from "@/components/LocationSearch";
 
 interface Patient extends IPatient {
   _id: string;
@@ -11,19 +19,30 @@ interface Patient extends IPatient {
 
 const Home: NextPage = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPage] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch("/api/patients");
+        const response = await fetch(`/api/patients?limit=20&page=${page}`);
         const data = await response.json();
+        console.log(data);
         setPatients(data.contents);
+        setTotalPage(data.totalPages);
       } catch (error) {
         console.error("Failed to fetch patient data:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchPatients();
   }, []);
+
+  function onPageChange(selectedItem: { selected: number }) {
+    setPage(selectedItem.selected);
+  }
 
   return (
     <div className="bg-[#c5ffc4]">
@@ -40,7 +59,7 @@ const Home: NextPage = () => {
             </p>
             <div className="mt-8">
               <Link href="/patientform">
-                <button className="bg-[#FF6B6B] hover:bg-[#FF4F4F] text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1">
+                <button className="bg-[#ff5555] hover:bg-[#d43636] text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1">
                   রোগীর তথ্য জমা দিন
                 </button>
               </Link>
@@ -65,26 +84,42 @@ const Home: NextPage = () => {
             সাম্প্রতিক রোগীর তালিকা
           </h2>
           {/* Search Bar */}
-          <div className="mb-6 max-w-md mx-auto">
-            <input
-              type="text"
-              placeholder="রোগী খুঁজুন..."
-              className="p-2 w-full rounded-md border border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
-            />
-          </div>
+          <LocationSearch page={page} setLoading={setLoading} setPatients={setPatients} setTotalPage={setTotalPage} />
         </div>
         {/* Patient Card Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 relative">
+          {loading && (
+            <div className="absolute inset-0 bg-white bg-opacity-50 flex justify-center items-center z-10">
+              <Spinner/>
+            </div>
+          )}
           {patients.map((patient) => (
             <PatientCard key={patient._id} patient={patient} />
           ))}
         </div>
+        
+        <div className="pt-8">
+              <ReactPaginate
+                className="flex justify-center items-center gap-4 flex-wrap"
+                pageLinkClassName={
+                  "px-4 py-2 rounded-md shadow outline-none bg-primary text-white text-sm hover:bg-green-700 hover:text-white"
+                }
+                pageCount={totalPages}
+                breakLabel="..."
+                nextLabel=">"
+                previousLinkClassName="px-4 py-2 rounded-md outline-none hover:bg-green-700 hover:text-white"
+                nextLinkClassName="px-4 py-2 rounded-md outline-none hover:bg-green-700 hover:text-white"
+                pageRangeDisplayed={5}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                activeLinkClassName="!bg-green-700 !text-white"
+                initialPage={page}
+                onPageChange={onPageChange}
+              />
+            </div>
       </section>
     </div>
   );
 };
 
 export default Home;
-
-
-

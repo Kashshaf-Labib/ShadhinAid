@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { Patient } from "@/types";
+import Image from "next/image";
 
 export default function PatientDetailPage() {
   const [patient, setPatient] = useState<Patient | null>(null);
@@ -30,7 +31,7 @@ export default function PatientDetailPage() {
       <Head>
         <title>{patient.name} - Shadhin Aid</title>
       </Head>
-        <div className="min-h-screen bg-gradient-to-r from-blue-100 to-indigo-100">
+        <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-200">
           <div className="container mx-auto p-4 pt-20">
             <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-4xl mx-auto">
               <div className="md:flex">
@@ -39,8 +40,15 @@ export default function PatientDetailPage() {
                   <h1 className="text-4xl font-bold mb-4 text-gray-900">
                     {patient.name}
                   </h1>
-                  <img className="max-w-xl w-full rounded-md mx-auto my-4" src={patient.imageUrl} alt={patient.name} />
-
+                  <div className="relative py-12">
+                    <Image
+                      src={patient.imageUrl}
+                      alt={patient.name}
+                      width={500}
+                      height={500}
+                      className="rounded-lg"
+                    />
+                  </div>
                   <p className="text-lg text-gray-700 mb-4">
                     <span className="font-semibold">রোগীর পেশা: </span>
                     {patient.profession}
@@ -71,14 +79,14 @@ export default function PatientDetailPage() {
                     {patient.hospital_name}
                   </p>
                   <p className="text-lg text-gray-700 mb-4">
-                    <span className="font-semibold">ঠিকানা:</span>
+                    <span className="font-semibold">ঠিকানা: </span>
                     {patient.location_name}
                   </p>
                   <p className="text-lg text-gray-700 mb-4">
-                    <span className="font-semibold">প্রয়োজনীয় ফান্ড:</span> {patient.total_fund_needed}৳
+                    <span className="font-semibold">প্রয়োজনীয় ফান্ড: </span> {patient.total_fund_needed}৳
                   </p>
                   <p className="text-lg text-gray-700 mb-4">
-                    <span className="font-semibold">সংগ্রহিত ফান্ড:</span>  {patient.total_fund_collected}৳
+                    <span className="font-semibold">সংগ্রহিত ফান্ড: </span>  {patient.total_fund_collected}৳
                   </p>
                   <div className="mt-8 flex justify-between">
                     <button className="bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300">

@@ -75,18 +75,21 @@ export const searchPatientsByHospital = async (
 export const findPatientsNearby = async (lat: number, lng: number, radius = 2000, page = 1, limit = 50) => {
   const query = {
     location: {
-      $near: {
-        $geometry: {
-          type: "Point",
-          coordinates: [lng, lat],
-        },
-        $maxDistance: radius,
+      $geoWithin: {
+        $centerSphere: [[lng, lat], radius/6378100],
       },
     },
   };
 
-  return await Patient.find(query)
+  const contents = await Patient.find(query)
     .skip((page - 1) * limit)
-    .limit(limit)
-    .sort({ location: 1 });
+    .limit(limit);
+    
+  const totalItems = await Patient.countDocuments(query);
+  return {
+    contents,
+    totalItems,
+    totalPages: Math.ceil(totalItems / limit),
+    currentPage: page,
+  };
 }

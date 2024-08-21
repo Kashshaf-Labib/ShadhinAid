@@ -16,11 +16,10 @@ export default function RootLayout({
         <title> Shadhin Aid </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={poppins.className}>
-
-      </div>
       <Navbar />
-      {children}
+      <div className={poppins.className}>
+        {children}
+      </div>
       <Toaster />
     </>
   );

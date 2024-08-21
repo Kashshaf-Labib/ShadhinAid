@@ -6,17 +6,19 @@ interface AutoCompleteInputProps {
   setAddress: (address: Address) => void;
   as?: string;
   value?: string;
+  placeholder?: string;
+  className?: string;
 }
 
 export default function AutoCompleteInput({
-  address, setAddress, as, value
+  setAddress, as, value, placeholder, className
 }: AutoCompleteInputProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (!inputRef.current) return;
 
-    const autocomplete = new google.maps.places.Autocomplete(inputRef.current);
+    const autocomplete = new google.maps.places.Autocomplete(inputRef.current, {componentRestrictions: { country: "bd" }});
     autocomplete.setFields([
       "address_components",
       "formatted_address",
@@ -47,8 +49,9 @@ export default function AutoCompleteInput({
       <input
       ref={inputRef}
       type="text"
-      className="outline-none border-none block"
+      className={className ? className : `outline-none border-none block`}
       defaultValue={value}
+      placeholder={placeholder}
       required
     />
   )

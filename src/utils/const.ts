@@ -12,3 +12,7 @@ export const serverUrl = "http://localhost:3000";
 export const CLIENT_EMAIL = process.env.CLIENT_EMAIL
 export const PRIVATE_KEY = process.env.PRIVATE_KEY
 export const UPLOAD_FOLDER = process.env.UPLOAD_FOLDER
+
+export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME
+export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY
+export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET

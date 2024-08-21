@@ -14,7 +14,7 @@ interface PatientCardProps {
 
 const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
   return (
-    <div className="relative bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-2xl duration-300 ease-in-out">
+    <div className="relative bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:scale-[1.01] hover:shadow-2xl duration-300 ease-in-out">
       <div className="relative w-full h-56">
         <Image
           src={patient.imageUrl}
@@ -24,7 +24,7 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
           className="rounded-t-lg"
         />
       </div>
-      <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="p-6 bg-gradient-to-br from-green-50 to-green-100">
         <h3 className="font-bold text-xl text-gray-800 mb-2">{patient.name}</h3>
         <p className="text-gray-700 mb-1">
           <span className="font-medium text-gray-900">রোগীর পেশা: </span>

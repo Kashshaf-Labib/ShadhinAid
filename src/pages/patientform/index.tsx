@@ -37,7 +37,7 @@ export default function PatientForm() {
     setLoading(true);
     try {
       const imageRes = await uploadImage(formData.get("file") as File);
-      imageUrl = imageRes.webViewLink;
+      imageUrl = imageRes.url;
     } catch (error) {
       toast.error("Failed to upload image");
     }

@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
                     Submit Patient Details
                   </Link>
                   <Link
-                    href='/patientdetails'
+                    href='/patients'
                     className='block px-4 py-2 text-gray-700 hover:bg-blue-800 hover:text-white'
                     role='menuitem'
                     onClick={() => setIsDropdownOpen(false)}
@@ -185,7 +185,7 @@ const Navbar: React.FC = () => {
               Submit Patient Details
             </Link>
             <Link
-              href='/patientdetails'
+              href='/patients'
               className='block px-3 py-2 text-zinc-100 rounded-md hover:bg-blue-800 hover:text-gray-300'
             >
               View Patients
