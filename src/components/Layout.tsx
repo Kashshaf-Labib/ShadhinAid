@@ -17,7 +17,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={poppins.className}>
+      <div className={`pt-12 ${poppins.className}`}>
         {children}
       </div>
       <Toaster />

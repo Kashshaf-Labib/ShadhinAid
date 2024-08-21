@@ -15,28 +15,28 @@ export const getLoggedInUser = async () => {
 
 export const navMenus = [
   {
-    name: "Home",
+    name: "হোম",
     href: "/",
   },
   {
-    name: "About",
+    name: "আমাদের সম্পর্কে",
     href: "/about",
   },
   {
-    name: "Contact",
+    name: "যোগাযোগ",
     href: "/contact",
   },
   {
-    name: "Submit Patient Details",
-    href: "/patientform",
+    name: "জমা দিন",
+    href: "/patient-form",
   },
   {
-    name: "View Patients",
-    href: "/patientdetails",
+    name: "রোগীর তালিকা",
+    href: "/patients",
   },
   {
-    name: "Fund Raising",
-    href: "/fund-raising",
+    name: "দাতা স্বচ্ছতা",
+    href: "/donor-transparency",
   },
 ]
 
