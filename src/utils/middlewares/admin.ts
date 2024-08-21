@@ -11,3 +11,6 @@ export const checkAdmin = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return payload as IUser;
 }
+
+
+
