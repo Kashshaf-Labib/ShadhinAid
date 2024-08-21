@@ -1,6 +1,5 @@
 import { atom, useAtom } from 'jotai';
 
-
 export type User = {
     id: number;
     name: string;

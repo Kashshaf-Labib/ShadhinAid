@@ -9,10 +9,15 @@ interface PatientCardProps {
     total_fund_needed?: number;
     total_fund_collected?: number;
     imageUrl: string;
+    approval: string;
   };
 }
 
 const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
+  if (patient.approval !== "approved") {
+    return null; // Don't render if not approved
+  }
+
   return (
     <div className="relative bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:scale-[1.01] hover:shadow-2xl duration-300 ease-in-out">
       <div className="relative w-full h-56">
@@ -24,25 +29,21 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
           className="rounded-t-lg"
         />
       </div>
-      <div className="p-6 bg-gradient-to-br from-green-50 to-green-100">
-        <h3 className="font-bold text-xl text-gray-800 mb-2">{patient.name}</h3>
-        <p className="text-gray-700 mb-1">
-          <span className="font-medium text-gray-900">রোগীর পেশা: </span>
-          {patient.profession}
+      <div className="p-6 bg-gradient-to-br from-blue-50 to-white">
+        <h3 className="text-lg font-semibold text-gray-800 mb-1">
+          {patient.name}
+        </h3>
+        <p className="text-sm text-gray-600">{patient.profession}</p>
+        <p className="text-sm text-gray-600">
+          প্রয়োজনীয় ফান্ড: {patient.total_fund_needed}৳
         </p>
-        <p className="text-gray-700 mb-1">
-          <span className="font-medium text-gray-900">প্রয়োজনীয় ফান্ড: </span>
-          {patient.total_fund_needed}৳
+        <p className="text-sm text-gray-600">
+          সংগ্রহিত ফান্ড: {patient.total_fund_collected}৳
         </p>
-        <p className="text-gray-700 mb-4">
-          <span className="font-medium text-gray-900">সংগ্রহিত ফান্ড: </span>
-          {patient.total_fund_collected}৳
-        </p>
-        <Link
-          href={`/patients/${patient._id}`}
-          className="inline-block text-center w-full bg-[#0F1B1A] text-white font-bold py-2 px-3 rounded-md text-sm hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1"
-        >
-          বিস্তারিত দেখুন
+        <Link href={`/patients/${patient._id}`}>
+          <span className="mt-4 inline-block px-4 py-2 bg-[#0F1B1A] text-white text-sm font-medium rounded cursor-pointer">
+            বিস্তারিত দেখুন
+          </span>
         </Link>
       </div>
     </div>
