@@ -40,27 +40,26 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="bg-[#c5ffc4]">
+    <div>
       {/* Hero Section */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-24">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-            <h1 className="font-heading mb-4 font-bold tracking-tight text-gray-900 text-4xl sm:text-5xl">
-              স্বাস্থ্যসেবা সহজ করুন
+        <div className="flex flex-col items-center justify-center pt-12">
+          <div className="w-full md:text-left mb-8 md:mb-0">
+            <h1 className="font-heading mb-4 text-center font-bold tracking-tight text-gray-900 text-4xl sm:text-5xl">
+              অসহায় রোগীদের সুস্থতার জন্যে আমাদের সাহায্য করুন
             </h1>
-            <p className="mt-4 max-w-3xl text-lg sm:text-xl text-gray-700 mx-auto md:mx-0">
-              আপনার রোগীদের তথ্য সহজে ব্যবস্থাপনা করুন এবং সর্বোত্তম সেবা প্রদান
-              করুন
+            <p className="mt-4 text-lg sm:text-xl text-gray-700 mx-auto md:mx-0 text-center w-full">
+              প্রতিটি দান কারও না কারও জীবনে পরিবর্তন নিয়ে আসবে।
             </p>
-            <div className="mt-8">
-              <Link href="/patientform">
+            <div className="mt-8 mx-auto text-center">
+              <Link href="/patientform" className="block">
                 <button className="bg-[#ff5555] hover:bg-[#d43636] text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1">
                   রোগীর তথ্য জমা দিন
                 </button>
               </Link>
             </div>
           </div>
-          <div className="w-full md:w-1/2 mt-8 md:mt-0">
+          {/* <div className="w-full md:w-1/2 mt-8 md:mt-0">
             <Image
               height={400}
               width={400}
@@ -68,7 +67,7 @@ const Home: NextPage = () => {
               alt="Healthcare professionals"
               className="rounded-lg shadow-lg mx-auto"
             />
-          </div>
+          </div> */}
         </div>
       </section>
 
