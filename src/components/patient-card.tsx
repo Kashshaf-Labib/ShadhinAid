@@ -14,10 +14,6 @@ interface PatientCardProps {
 }
 
 const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
-  if (patient.approval !== "approved") {
-    return null; // Don't render if not approved
-  }
-
   return (
     <div className="relative bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:scale-[1.01] hover:shadow-2xl duration-300 ease-in-out">
       <div className="relative w-full h-56">

@@ -17,17 +17,18 @@ export const deletePatient = async (id: string) => {
   return await Patient.findByIdAndDelete(id);
 };
 
-export const getPatients = async (type = "full", page = 1, limit = 50) => {
+export const getPatients = async (type = "full", approval:string|null, page = 1, limit = 50) => {
   let contents;
+
+  let query = {};
+  if (approval) query = { approval };
 
   page = Math.max(1, page);
   limit = Math.max(1, limit);
-
   // Calculate the number of items to skip
   const skip = (page - 1) * limit;
-
   if (type == "short")
-    contents = await Patient.find()
+    contents = await Patient.find(query)
       .skip(skip)
       .limit(limit)
       .sort({ created_at: 1 })
@@ -49,6 +50,7 @@ export const getPatients = async (type = "full", page = 1, limit = 50) => {
 
 export const searchPatientsByHospital = async (
   keyword: string,
+  approval: string | null,
   page = 1,
   limit = 50
 ) => {
@@ -57,7 +59,10 @@ export const searchPatientsByHospital = async (
 
   // Calculate the number of items to skip
   const skip = (page - 1) * limit;
-  const query = { hospital_name: { $regex: keyword, $options: "i" } };
+  // Create a query object to search for the keyword
+  let query:any = { hospital_name: { $regex: keyword, $options: "i" } };
+  if (approval) query = { ...query, approval };
+
   const contents = await Patient.find(query)
     .skip(skip)
     .limit(limit)

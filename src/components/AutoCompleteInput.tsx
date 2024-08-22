@@ -49,7 +49,7 @@ export default function AutoCompleteInput({
       <input
       ref={inputRef}
       type="text"
-      className={className ? className : `outline-none border-none block`}
+      className={className ? className : `text-ellipsis bg-transparent outline-none border-none block`}
       defaultValue={value}
       placeholder={placeholder}
       required
@@ -62,7 +62,7 @@ export default function AutoCompleteInput({
       <input
         ref={inputRef}
         type="text"
-        className="mt-1 block w-full px-3 py-2 border bg-slate-100 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        className="text-ellipsis mt-1 block w-full px-3 py-2 border bg-slate-100 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         placeholder="এলাকা, শহর, জায়গার নাম সার্চ করে সিলেক্ট করুন"
         required
       />

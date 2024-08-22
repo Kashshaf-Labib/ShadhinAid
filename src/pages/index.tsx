@@ -4,13 +4,8 @@ import { IPatient } from "@/utils/models/Patient";
 import PatientCard from "@/components/patient-card";
 import Image from "next/image";
 import Link from "next/link";
-import { MapProvider } from "@/components/MapProvider";
-import AutoCompleteInput from "@/components/AutoCompleteInput";
-import { Address } from "@/lib/utils";
-import { BiSearch } from "react-icons/bi";
 import ReactPaginate from "react-paginate";
 import Spinner from "@/components/Spinner";
-import toast from "react-hot-toast";
 import LocationSearch from "@/components/LocationSearch";
 
 interface Patient extends IPatient {
@@ -26,7 +21,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch(`/api/patients?limit=20&page=${page}`);
+        const response = await fetch(`/api/patients?type=short&approval=approved&limit=20&page=${page}`);
         const data = await response.json();
         console.log(data);
         setPatients(data.contents);
@@ -38,7 +33,7 @@ const Home: NextPage = () => {
       }
     };
     fetchPatients();
-  }, []);
+  }, [page]);
 
   function onPageChange(selectedItem: { selected: number }) {
     setPage(selectedItem.selected);
@@ -93,8 +88,8 @@ const Home: NextPage = () => {
               <Spinner/>
             </div>
           )}
-          {patients.map((patient) => (
-            <PatientCard key={patient._id} patient={patient} />
+          {patients.map((patient, index) => (
+            <PatientCard key={patient._id + index} patient={patient} />
           ))}
         </div>
         

@@ -8,11 +8,12 @@ import {
 
 const GET = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { limit, page, hospital_name, type } = req.query;
+    const { limit, page, hospital_name, type, approval } = req.query;
     await dbConnect();
     if (!hospital_name) {
       const data = await getPatients(
         type as string,
+        approval ? approval as string : null,
         page ? +page : 1,
         limit ? +limit : 50
       );
@@ -20,6 +21,7 @@ const GET = async (req: NextApiRequest, res: NextApiResponse) => {
     } else {
       const data = await searchPatientsByHospital(
         hospital_name as string,
+        approval ? approval as string : null,
         page ? +page : 1,
         limit ? +limit : 50
       );

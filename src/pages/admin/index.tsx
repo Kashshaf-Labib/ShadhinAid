@@ -44,6 +44,7 @@ const AdminDashboard = () => {
     fetch("/api/patients")
       .then((response) => response.json())
       .then((response) => {
+        console.log(response);
         setPatients(response.contents);
       })
       .catch((err) => console.error(err));
@@ -52,81 +53,78 @@ const AdminDashboard = () => {
   if (!userLoaded) return <Spinner />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-indigo-50 pt-16 pb-8">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
-          Admin Dashboard
-        </h1>
+    <div className="min-h-screen pt-24 bg-gray-100 px-3">
+      <div className="bg-white py-8 px-4 rounded shadow-md w-full mx-auto">
+        <h1 className="text-3xl font-bold mb-6 text-center">Admin Dashboard</h1>
 
-        <div className="overflow-x-auto bg-white rounded-lg shadow-md">
-          <div className="p-4">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Patients</h2>
-            <MapProvider>
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-800 text-white">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                      No.
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                      Timestamp
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                      Name
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Approval
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Fund Needed
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Phone
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Medical ID
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Profession
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Description
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Guardian's Name
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Guardian's Profession
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Guardian's Phone
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Hospital
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Location's Name
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                      Location's Coordinates
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {patients.map((patient, index) => (
-                    <PatientRow
-                      patient={patient}
-                      index={index}
-                      key={patient._id}
-                    />
-                  ))}
-                </tbody>
-              </table>
-            </MapProvider>
+        <div className="pt-8">
+          <h2 className="text-2xl pb-4 font-semibold">Patients</h2>
+          <MapProvider>
+          <div className="relative overflow-x-auto w-full">
+            <table className="min-w-[100vw] w-full text-xs">
+              <thead className="text-white uppercase bg-primary">
+                <tr>
+                  <th scope="col" className="px-6 py-3 border">
+                    No.
+                  </th>
+                  <th scope="col" className="px-6 py-3 border">
+                    Timestamp
+                  </th>
+                  <th scope="col" className="px-6 py-3 border min-w-40">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center">
+                    Approval
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-wrap">
+                    Fund Needed
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-wrap">
+                    Fund Collected
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Phone
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Medical ID
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Profession
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Description
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Guardian's Name
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Guardian's Profession
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Guardian's Phone
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Hospital
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-center text-nowrap">
+                    Location's Name
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-nowrap">
+                    Location's Coordinates
+                  </th>
+                  <th scope="col" className="px-6 py-3 border text-nowrap">
+                    Image
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {patients.map((patient, index) => (  
+                    <PatientRow patient={patient} index={index} key={patient._id + index}/>
+                ))}
+              </tbody>
+            </table>
           </div>
+          </MapProvider>
         </div>
       </div>
     </div>
@@ -134,5 +132,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
-

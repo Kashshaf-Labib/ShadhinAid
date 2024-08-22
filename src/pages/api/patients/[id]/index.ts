@@ -24,7 +24,7 @@ const GET = async (req: NextApiRequest, res: NextApiResponse) => {
 const PUT = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const isAdmin = await checkAdmin(req, res);
-    if (!isAdmin) return;
+    if (!isAdmin) return res.status(200).json({ message: "Unauthorized" });
 
     const patient = await updatePatient(req.query.id as string, req.body);
 
@@ -38,7 +38,7 @@ const PUT = async (req: NextApiRequest, res: NextApiResponse) => {
 const DELETE = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const isAdmin = await checkAdmin(req, res);
-    if (!isAdmin) return;
+    if (!isAdmin) return res.status(200).json({ message: "Unauthorized" });
 
     const patient = await deletePatient(req.query.id as string);
 

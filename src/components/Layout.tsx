@@ -14,7 +14,7 @@ export default function RootLayout({
     <>
       <Head>
         <title> Shadhin Aid </title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
       <Navbar />
       <div className={`pt-12 ${poppins.className}`}>

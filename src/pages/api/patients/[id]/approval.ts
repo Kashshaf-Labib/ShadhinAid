@@ -13,6 +13,9 @@ export default async function handler(
       const { id } = req.query;
       const { approval } = req.body;
 
+      const isAdmin = await checkAdmin(req, res);
+      if (!isAdmin) return res.status(200).json({ message: "Unauthorized" });
+      
       if (!["approved", "pending"].includes(approval)) {
         return res.status(400).json({ error: "Invalid approval status" });
       }
